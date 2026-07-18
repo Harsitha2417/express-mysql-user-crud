@@ -1,3 +1,4 @@
+require("dotenv").config();
 const { faker } = require('@faker-js/faker');//requireing faker package
 const mysql = require('mysql2');//requireing mysql2
 const express = require("express"); //requering express package
@@ -15,10 +16,11 @@ app.set("view engine","ejs");
 app.set("views", path.join(__dirname,"/views"));
 
 const connection = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  database: 'learn_app',
-  password:'Harsitha@_24'
+   host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  database: process.env.DB_NAME,
+  password: process.env.DB_PASSWORD
+
 }); //from mysql2 package
 
 
